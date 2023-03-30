@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nastirlex.test.databinding.ItemCardListBinding
 
-class CardListAdapter: RecyclerView.Adapter<CardListAdapter.CardlistViewHolder>() {
+class CardListAdapter : RecyclerView.Adapter<CardListAdapter.CardlistViewHolder>() {
     val colors = arrayListOf(
         0xff8E97FD.toInt(),
         0xffFA6E5A.toInt(),
@@ -33,8 +33,7 @@ class CardListAdapter: RecyclerView.Adapter<CardListAdapter.CardlistViewHolder>(
 
     val text = arrayListOf(
         "Reduce Stress",
-        "Improve Perfomanee",
-
+        "Improve Performanee",
         "Reduce Anxiety",
         "Increase Happiness",
         "Personal Growth",
@@ -44,35 +43,31 @@ class CardListAdapter: RecyclerView.Adapter<CardListAdapter.CardlistViewHolder>(
     )
 
     val images = arrayListOf(
-        R.drawable.reduce,
-        R.drawable.perfomance,
-        R.drawable.reduce_anxiety,
-        R.drawable.increase,
-        R.drawable.personal,
-        R.drawable.better,
-        R.drawable.reduce,
-        R.drawable.almost
+        R.drawable.ic_reduce_stress,
+        R.drawable.ic_improve_performance,
+        R.drawable.ic_reduce_anxiety,
+        R.drawable.ic_increase_happiness,
+        R.drawable.ic_personal_growth,
+        R.drawable.ic_better_sleep,
+        R.drawable.ic_reduce_stress,
+        R.drawable.ic_extra
     )
 
-    class CardlistViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class CardlistViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val viewBinding = ItemCardListBinding.bind(view)
 
         fun bind(text: String, color: Int, image: Int, textColor: Int) {
-            val b = itemView.layoutParams
             viewBinding.textView7.text = text
             viewBinding.cardView.setCardBackgroundColor(color)
             viewBinding.imageView.setImageResource(image)
             viewBinding.textView7.setTextColor(textColor)
-            if (itemViewType == 0) {
-                b.height = 550
-            } else {
-                b.height = 490
-            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardlistViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card_list, parent, false)
+        val view = if (viewType == 0) LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_big_card_list, parent, false)
+        else LayoutInflater.from(parent.context).inflate(R.layout.item_card_list, parent, false)
         return CardlistViewHolder(view)
     }
 
@@ -85,7 +80,7 @@ class CardListAdapter: RecyclerView.Adapter<CardListAdapter.CardlistViewHolder>(
     }
 
     override fun getItemViewType(position: Int): Int {
-        when(position) {
+        when (position) {
             0, 2, 4, 6 -> {
                 return 0
             }

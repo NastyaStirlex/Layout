@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Test</string>
+    <string name="empty_fields">Name, email and password cannot be empty</string>
 </resources>
