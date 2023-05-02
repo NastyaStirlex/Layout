@@ -6,9 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SpacesItemDecoration(space: Int): RecyclerView.ItemDecoration() {
     var space: Int = space
-    fun SpacesItemDecoration(space: Int) {
-        this.space = space;
-    }
     @Override
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State ) {
         outRect.left = space;
